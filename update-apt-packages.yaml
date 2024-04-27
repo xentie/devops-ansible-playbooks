@@ -7,3 +7,9 @@
       apt:
         upgrade: yes
         update_cache: yes
+        
+    - name: Install Qemu-Guest-Agent
+      ansible.builtin.apt:
+        name:
+          - qemu-guest-agent
+        state: present
