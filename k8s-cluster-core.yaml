@@ -1,0 +1,19 @@
+---
+- hosts: k8s_cluster
+
+  become: true
+  tasks:
+    - name: Disable Swap
+      ansible.builtin.command: sudo swapoff -a
+      register: output
+      changed_when: output.rc != 0
+      tags:
+        - disable_swap
+
+    - name: Disable Swap permanently
+      ansible.builtin.replace:
+        path: /etc/fstab
+        regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
+        replace: '# \1'
+      tags:
+        - disable_swap
