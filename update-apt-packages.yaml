@@ -1,6 +1,5 @@
 ---
-- hosts: all
-
+- hosts: k8s_cluster
   become: true
   tasks:
     - name: update apt packages
