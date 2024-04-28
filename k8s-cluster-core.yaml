@@ -5,7 +5,6 @@
   vars:
     kube_prereq_packages: [curl, ca-certificates, apt-transport-https, gpg]
     kube_packages: [kubeadm, kubectl, kubelet]
-
   tasks:
     - name: Test Reacheability
       ansible.builtin.ping:
