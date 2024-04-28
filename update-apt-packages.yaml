@@ -12,3 +12,7 @@
         name:
           - qemu-guest-agent
         state: present
+
+    - name: Set the timezone
+      ansible.builtin.timezone:
+        name: Asia/Manila
