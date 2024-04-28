@@ -227,7 +227,7 @@
 #    - name: 1. Initialize Cluster
 #      ansible.builtin.shell: |
 #        set -o pipefail
-#        sudo kubeadm init --control-plane-endpoint={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }} --pod-network-cidr=10.1.0.1/16
+#        sudo kubeadm init --control-plane-endpoint={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }} --pod-network-cidr=10.8.0.0/16
 #      register: init_cluster_output
 #      changed_when: init_cluster_output.rc != 0
 #      args:
