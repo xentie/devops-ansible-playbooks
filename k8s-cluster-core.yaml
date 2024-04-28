@@ -221,7 +221,7 @@
 
 - name: Setup Controller Nodes
   gather_facts: true
-  hosts: k8s_master
+  hosts: k8s_controllers
   become: true
 
   tasks:
@@ -306,7 +306,7 @@
 
 - name: Join Worker Nodes
   gather_facts: true
-  hosts: k8s_worker
+  hosts: k8s_nodes
   become: true
   vars:
     node_conn_string: "{{ lookup('ansible.builtin.file', 'Remote_Files/worker_conn_string') }}"
