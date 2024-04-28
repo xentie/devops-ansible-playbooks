@@ -214,10 +214,10 @@
       tags:
         - install_kube_packages
 
-    - name: Prompt To Continue On To Configuring Control Nodes
-      ansible.builtin.pause:
-        prompt: Press RETURN when you want to continue configuring the Control nodes!
-
+#    - name: Prompt To Continue On To Configuring Control Nodes
+#      ansible.builtin.pause:
+#        prompt: Press RETURN when you want to continue configuring the Control nodes!
+#
 #- name: Setup Controller Nodes
 #  gather_facts: true
 #  hosts: k8s_controllers
