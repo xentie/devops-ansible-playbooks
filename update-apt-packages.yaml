@@ -2,12 +2,19 @@
 - hosts: k8s_cluster
   become: true
   tasks:
-    - name: Update apt packages
-      apt:
-        upgrade: yes
-        update_cache: yes
+    - name: Test Reacheability
+      ansible.builtin.ping:
 
-    - name: Install qemu guest qgent
+    - name: Update Cache
+      ansible.builtin.apt:
+        update_cache: true
+        autoclean: true
+
+    - name: Upgrade All the Packages to the latest
+      ansible.builtin.apt:
+        upgrade: "full"
+
+    - name: Install Qemu-Guest-Agent
       ansible.builtin.apt:
         name:
           - qemu-guest-agent
@@ -16,3 +23,16 @@
     - name: Set the timezone
       ansible.builtin.timezone:
         name: Asia/Manila
+
+    - name: Reboot
+      ansible.builtin.reboot:
+      register: system_reboot
+
+    - name: Verify Reboot Success
+      ansible.builtin.ping:
+      when: system_reboot.rebooted
+
+    - name: Update Cache
+      ansible.builtin.apt:
+        update_cache: true
+        autoclean: true
